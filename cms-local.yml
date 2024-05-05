@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root@123
-    url: jdbc:mysql://host.docker.internal:3306/cms
+    url: jdbc:mysql://localhost:3306/cms
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
