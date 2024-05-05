@@ -18,5 +18,11 @@ rabbitmq:
   username: "guest"
   password: "guest"
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 current:
   environment: prod
