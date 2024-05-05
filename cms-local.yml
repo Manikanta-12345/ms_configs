@@ -11,5 +11,12 @@ spring:
       ddl-auto: update
   config:
     import: optional:configserver:localhost:8071
+
+rabbitmq:
+  host: "localhost"
+  port: 5672
+  username: "guest"
+  password: "guest"
+
 current:
   environment: localenv
