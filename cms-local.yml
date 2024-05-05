@@ -19,4 +19,4 @@ rabbitmq:
   password: "guest"
 
 current:
-  environment: localenv
+  environment: local
