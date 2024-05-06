@@ -1,0 +1,21 @@
+spring:
+  config:
+    import: optional:configserver:host.docker.internal:8071
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://host.docker.internal:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+current:
+  environment: prod
