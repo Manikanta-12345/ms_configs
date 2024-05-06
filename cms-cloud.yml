@@ -10,7 +10,16 @@ spring:
     hibernate:
       ddl-auto: update
   config:
-    import: optional:configserver:localhost:8071
+    import: optional:configserver:host.docker.internal:8071
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://host.docker.internal:8070/eureka/
 
 rabbitmq:
   host: "localhost"
