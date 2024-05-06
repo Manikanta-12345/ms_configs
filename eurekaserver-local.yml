@@ -1,6 +1,6 @@
 eureka:
   instance:
-    hostname: host.docker.internal
+    hostname: localhost
   client:
     fetchRegistry: false
     registerWithEureka: false
