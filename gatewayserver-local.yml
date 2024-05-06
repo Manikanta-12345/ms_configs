@@ -1,7 +1,3 @@
-spring:
-  config:
-    import: optional:configserver:localhost:8071
-
 eureka:
   instance:
     preferIpAddress: true
@@ -19,6 +15,9 @@ management:
         include: "*"
   endpoint:
     gateway:
+      enabled: true
+  info:
+    env:
       enabled: true
 
 current:
