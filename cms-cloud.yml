@@ -19,7 +19,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://host.docker.internal:8070/eureka
+      defaultZone: http://host.docker.internal:8761/eureka/
 
 rabbitmq:
   host: "localhost"
