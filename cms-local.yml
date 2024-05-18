@@ -12,6 +12,11 @@ spring:
   config:
     import: optional:configserver:localhost:8071
 
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 eureka:
   instance:
     preferIpAddress: true
