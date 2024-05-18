@@ -26,6 +26,14 @@ eureka:
     serviceUrl:
       defaultZone: http://host.docker.internal:8761/eureka/
 
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
 rabbitmq:
   host: "localhost"
   port: 5672
