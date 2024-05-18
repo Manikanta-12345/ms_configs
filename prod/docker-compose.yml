@@ -236,7 +236,7 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
       OTEL_SERVICE_NAME: "eurekaserver"
 
-  accounts:
+  cms:
     image: "mani12345/cms:s11"
     container_name: cms-ms
     ports:
@@ -259,7 +259,7 @@ services:
       file: common-config.yml
       service: microservice-eureka-config
 
-  loans:
+  oms:
     image: "mani12345/oms:s11"
     container_name: oms-ms
     ports:
