@@ -204,7 +204,7 @@ services:
     ports:
       - "8071:8071"
     healthcheck:
-      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      test: "curl --fail --silent configserver:8071/actuator/health/readiness | grep UP || exit 1"
       interval: 20s
       timeout: 5s
       retries: 20
@@ -224,7 +224,7 @@ services:
       configserver:
         condition: service_healthy
     healthcheck:
-      test: "curl --fail --silent localhost:8761/actuator/health/readiness | grep UP || exit 1"
+      test: "curl --fail --silent eurekaserver:8761/actuator/health/readiness | grep UP || exit 1"
       interval: 20s
       timeout: 5s
       retries: 20
@@ -247,7 +247,7 @@ services:
       eurekaserver:
         condition: service_healthy
     healthcheck:
-      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      test: "curl --fail --silent cms:8080/actuator/health/readiness | grep UP || exit 1"
       interval: 20s
       timeout: 5s
       retries: 20
@@ -270,7 +270,7 @@ services:
       eurekaserver:
         condition: service_healthy
     healthcheck:
-      test: "curl --fail --silent localhost:8081/actuator/health/readiness | grep UP || exit 1"
+      test: "curl --fail --silent oms:8081/actuator/health/readiness | grep UP || exit 1"
       interval: 20s
       timeout: 5s
       retries: 20
