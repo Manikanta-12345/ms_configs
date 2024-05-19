@@ -9,8 +9,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  config:
-    import: optional:configserver:host.docker.internal:8071
 
   cloud:
     openfeign:

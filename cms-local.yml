@@ -9,8 +9,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  config:
-    import: optional:configserver:localhost:8071
 
   cloud:
     openfeign:
@@ -30,12 +28,11 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
-    hostname: localhost
   client:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://host.docker.internal:8761/eureka/
 
 resilience4j.circuitbreaker:
   configs:
@@ -84,4 +81,4 @@ management:
       application: ${spring.application.name}
 
 current:
-  environment: local
+  environment: prod
