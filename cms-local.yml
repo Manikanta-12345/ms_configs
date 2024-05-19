@@ -18,10 +18,6 @@ spring:
         enabled: true
   function:
     definition: sendCommunication
-  stream:
-    bindings:
-      sendCommunication-out-0:
-        destination: send-communication
 
 eureka:
   instance:
