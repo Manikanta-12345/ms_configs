@@ -22,6 +22,10 @@ spring:
     bindings:
       sendCommunication-out-0:
         destination: send-communication
+    kafka:
+      binder:
+        brokers:
+          - localhost:9092
 
 eureka:
   instance:
