@@ -5,7 +5,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://host.docker.internal:8761/eureka/
+      defaultZone: http://eurekaserver:8761/eureka/
 
 management:
   endpoints:
