@@ -17,8 +17,7 @@ spring:
       definition: updateCommunication
   kubernetes:
     discovery:
-      enabled: true
-      discovery-server-url: spring-cloud-kubernetes-discoveryserver.default.svc:8761
+      discovery-server-url: spring-cloud-kubernetes-discoveryserver:8761
       all-namespaces: true
   discovery:
     client:
