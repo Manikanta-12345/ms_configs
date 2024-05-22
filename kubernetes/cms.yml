@@ -55,12 +55,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cms
+  name: oms
 spec:
   selector:
-    app: cms
+    app: oms
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 8082
+      targetPort: 8082

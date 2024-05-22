@@ -24,7 +24,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: techapps-configmap
-                  key: CMS_APPLICATION_NAME
+                  key: OMS_APPLICATION_NAME
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
@@ -59,7 +59,7 @@ metadata:
 spec:
   selector:
     app: oms
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8082

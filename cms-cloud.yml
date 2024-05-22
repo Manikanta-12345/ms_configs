@@ -87,6 +87,3 @@ management:
 
 current:
   environment: prod
-
-oms:
-  url: ""
