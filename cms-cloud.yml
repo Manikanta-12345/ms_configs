@@ -17,7 +17,8 @@ spring:
       definition: updateCommunication
   kubernetes:
     discovery:
-      discovery-server-url: spring-cloud-kubernetes-discoveryserver.default.svc:80
+      include-external-name-services: true
+      include-not-ready-addresses: true
       all-namespaces: true
   discovery:
     client:
