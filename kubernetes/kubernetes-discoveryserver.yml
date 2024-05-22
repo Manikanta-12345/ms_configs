@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: List
 items:
@@ -16,39 +15,52 @@ items:
       selector:
         app: spring-cloud-kubernetes-discoveryserver
       type: ClusterIP
+
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
       labels:
         app: spring-cloud-kubernetes-discoveryserver
       name: spring-cloud-kubernetes-discoveryserver
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      labels:
-        app: spring-cloud-kubernetes-discoveryserver
-      name: spring-cloud-kubernetes-discoveryserver:view
-    roleRef:
-      kind: Role
-      apiGroup: rbac.authorization.k8s.io
-      name: namespace-reader
-    subjects:
-      - kind: ServiceAccount
-        name: spring-cloud-kubernetes-discoveryserver
+
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
-      namespace: default
       name: namespace-reader
+      namespace: default
     rules:
-      - apiGroups: ["", "extensions", "apps"]
-        resources: ["services", "endpoints", "pods"]
+      - apiGroups: ["", "discovery.k8s.io"]
+        resources:
+          [
+            "configmaps",
+            "pods",
+            "services",
+            "endpoints",
+            "secrets",
+            "endpointslices",
+          ]
         verbs: ["get", "list", "watch"]
+
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: namespace-reader-binding
+      namespace: default
+    subjects:
+      - kind: ServiceAccount
+        name: spring-cloud-kubernetes-discoveryserver
+        namespace: default
+    roleRef:
+      kind: Role
+      name: namespace-reader
+      apiGroup: rbac.authorization.k8s.io
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       name: spring-cloud-kubernetes-discoveryserver-deployment
     spec:
+      replicas: 1
       selector:
         matchLabels:
           app: spring-cloud-kubernetes-discoveryserver
@@ -57,7 +69,7 @@ items:
           labels:
             app: spring-cloud-kubernetes-discoveryserver
         spec:
-          serviceAccount: spring-cloud-kubernetes-discoveryserver
+          serviceAccountName: spring-cloud-kubernetes-discoveryserver
           containers:
             - name: spring-cloud-kubernetes-discoveryserver
               image: springcloud/spring-cloud-kubernetes-discoveryserver:3.1.0
@@ -66,13 +78,13 @@ items:
                 httpGet:
                   port: 8761
                   path: /actuator/health/readiness
-                initialDelaySeconds: 100
+                initialDelaySeconds: 10
                 periodSeconds: 30
               livenessProbe:
                 httpGet:
                   port: 8761
                   path: /actuator/health/liveness
-                initialDelaySeconds: 100
+                initialDelaySeconds: 10
                 periodSeconds: 30
               ports:
                 - containerPort: 8761

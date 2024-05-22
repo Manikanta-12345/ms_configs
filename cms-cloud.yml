@@ -15,15 +15,15 @@ spring:
         enabled: true
     function:
       definition: updateCommunication
-  kubernetes:
+    kubernetes:
+      discovery:
+        include-external-name-services: true
+        include-not-ready-addresses: true
+        all-namespaces: true
     discovery:
-      include-external-name-services: true
-      include-not-ready-addresses: true
-      all-namespaces: true
-  discovery:
-    client:
-      health-indicator:
-        enabled: false
+      client:
+        health-indicator:
+          enabled: false
     # stream:
     #   bindings:
     #     updateCommunication-in-0:
