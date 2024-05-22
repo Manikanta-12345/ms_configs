@@ -39,7 +39,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: techapps-configmap
-                  key: DB_ADDR
+                  key: DB_CMS_ADDR
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:

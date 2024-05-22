@@ -59,7 +59,7 @@ metadata:
 spec:
   selector:
     app: oms
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8082
