@@ -12,20 +12,20 @@ spring:
   config:
     import: optional:configserver:host.docker.internal:8071
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://host.docker.internal:8761/eureka/
+# eureka:
+#   instance:
+#     preferIpAddress: true
+#   client:
+#     fetchRegistry: true
+#     registerWithEureka: true
+#     serviceUrl:
+#       defaultZone: http://host.docker.internal:8761/eureka/
 
-rabbitmq:
-  host: "localhost"
-  port: 5672
-  username: "guest"
-  password: "guest"
+# rabbitmq:
+#   host: "localhost"
+#   port: 5672
+#   username: "guest"
+#   password: "guest"
 
 management:
   endpoints:

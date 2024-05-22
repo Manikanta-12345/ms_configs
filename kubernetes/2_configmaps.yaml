@@ -18,9 +18,10 @@ data:
   KEYCLOAK_USER: admin
   KEYCLOAK_PASSWORD: admin-password
   DB_VENDOR: mysql
-  DB_ADDR: gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com
+  DB_CMS_ADDR: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/cms
+  DB_OMS_ADDR: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/oms
   DB_PORT: "3306"
   DB_DATABASE: keycloak
   DB_USER: "admin"
   DB_PASSWORD: "gflk8sdb"
-  OMS_URL: http://oms:8082/
+  OMS_URL: http://oms/
