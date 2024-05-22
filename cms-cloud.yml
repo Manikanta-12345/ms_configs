@@ -1,6 +1,3 @@
-oms:
-  url: ""
-
 spring:
   datasource:
     username: root
@@ -87,3 +84,6 @@ management:
 
 current:
   environment: prod
+
+oms:
+  url: ""

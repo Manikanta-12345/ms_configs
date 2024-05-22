@@ -55,10 +55,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: oms
+  name: cms
 spec:
   selector:
-    app: oms
+    app: cms
   type: LoadBalancer
   ports:
     - protocol: TCP
