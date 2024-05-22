@@ -18,6 +18,7 @@ spring:
   kubernetes:
     discovery:
       enabled: true
+      discovery-server-url: https://spring-cloud-kubernetes-discoveryserver:80
       all-namespaces: true
   discovery:
     client:
