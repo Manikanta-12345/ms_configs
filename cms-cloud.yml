@@ -19,6 +19,10 @@ spring:
     discovery:
       enabled: true
       all-namespaces: true
+  discovery:
+    client:
+      health-indicator:
+        enabled: false
     # stream:
     #   bindings:
     #     updateCommunication-in-0:
