@@ -15,6 +15,10 @@ spring:
         enabled: true
     function:
       definition: updateCommunication
+  kubernetes:
+    discovery:
+      enabled: true
+      all-namespaces: true
     # stream:
     #   bindings:
     #     updateCommunication-in-0:

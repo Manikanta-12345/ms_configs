@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oms
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: oms
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: oms
-          image: mani12345/oms:s14
+          image: mani12345/oms:r2
           ports:
             - containerPort: 8082
           env:
@@ -59,7 +59,7 @@ metadata:
 spec:
   selector:
     app: oms
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8082

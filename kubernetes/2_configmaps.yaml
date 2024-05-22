@@ -24,4 +24,4 @@ data:
   DB_DATABASE: keycloak
   DB_USER: "admin"
   DB_PASSWORD: "gflk8sdb"
-  OMS_URL: http://oms/
+  OMS_URL: http://oms:8082
