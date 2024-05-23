@@ -1,78 +1,87 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: keycloak
+  name: keycloak18-headless
 spec:
-  replicas: 1
+  clusterIP: None
   selector:
-    matchLabels:
-      app: keycloak
-  template:
-    metadata:
-      labels:
-        app: keycloak
-    spec:
-      containers:
-        - name: keycloak
-          image: quay.io/keycloak/keycloak:24.0.1
-          args: ["start-dev"]
-          env:
-            - name: DB_VENDOR
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_VENDOR
-            - name: DB_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_ADDR
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_PORT
-            - name: DB_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_DATABASE
-            - name: DB_USER
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: DB_PASSWORD
-            - name: KEYCLOAK_ADMIN
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: KEYCLOAK_USER
-            - name: KEYCLOAK_ADMIN_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: techapps-configmap
-                  key: KEYCLOAK_ADMIN_PASSWORD
-          ports:
-            - containerPort: 8080
-            - containerPort: 8080
-
+    app: keycloak18
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
+    - name: jgroups
+      port: 8080
+      protocol: TCP
+      targetPort: jgroups
+  sessionAffinity: None
+  type: ClusterIP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: keycloak
+  name: keycloak18
   labels:
-    app: keycloak
+    app: keycloak18
 spec:
-  selector:
-    app: keycloak
-  type: NodePort
   ports:
     - name: http
-      port: 7080
+      port: 8080
       targetPort: 8080
+  selector:
+    app: keycloak18
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak18
+  labels:
+    app: keycloak18
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak18
+  template:
+    metadata:
+      labels:
+        app: keycloak18
+    spec:
+      containers:
+        - name: keycloak18
+          image: quay.io/keycloak/keycloak:18.0.0
+          args: ["start-dev"]
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: "admin"
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: "admin"
+            - name: KC_PROXY
+              value: "edge"
+            - name: KC_DB
+              value: "mysql"
+            - name: KC_DB_URL
+              value: "jdbc:mysql://mysqlhost:3306/keycloakonquarkus"
+            - name: KC_DB_USERNAME
+              value: "mysqluser"
+            - name: KC_DB_PASSWORD
+              value: "mysqlpassword"
+            - name: KC_HEALTH_ENABLED
+              value: "true"
+            - name: KC_METRICS_ENABLED
+              value: "true"
+            - name: KC_FEATURES
+              value: "token-exchange,preview,scripts"
+            - name: KC_HTTP_RELATIVE_PATH
+              value: "/auth"
+            - name: KC_SPI_ADMIN_REALM
+              value: "yourmasterrealmname"
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /auth/realms/techapps
+              port: 8080
+https://stackoverflow.com/questions/73959233/keycloak-using-bitnami-with-production-config

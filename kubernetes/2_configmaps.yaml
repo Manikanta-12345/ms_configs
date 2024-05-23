@@ -17,9 +17,10 @@ data:
   apiVersion: v1
   KEYCLOAK_USER: admin
   KEYCLOAK_PASSWORD: admin-password
-  DB_VENDOR: mysql
+  DB_VENDOR: "mysql"
   DB_CMS_ADDR: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/cms
   DB_OMS_ADDR: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/oms
+  DB_KEYCLOAK_ADDR: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/keycloak
   DB_PORT: "3306"
   DB_DATABASE: keycloak
   DB_USER: "admin"
