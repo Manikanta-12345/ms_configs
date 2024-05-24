@@ -95,4 +95,4 @@ current:
   environment: prod
 
 oms:
-  url: ""
+  url: http://oms:8082
