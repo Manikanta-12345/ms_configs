@@ -84,4 +84,3 @@ spec:
             httpGet:
               path: /auth/realms/techapps
               port: 8080
-https://stackoverflow.com/questions/73959233/keycloak-using-bitnami-with-production-config

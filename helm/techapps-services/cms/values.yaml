@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: mani12345/cms
-  tag: r5
+  tag: r6
 
 containerPort: 8081
 

@@ -1,0 +1,18 @@
+dependencies:
+- name: techapps-common
+  repository: file://../../techapps-common
+  version: 0.1.0
+- name: configserver
+  repository: file://../../techapps-services/configserver
+  version: 0.1.0
+- name: cms
+  repository: file://../../techapps-services/cms
+  version: 0.1.0
+- name: oms
+  repository: file://../../techapps-services/oms
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../techapps-services/gatewayserver
+  version: 0.1.0
+digest: sha256:ab7f97c7b176369d0a330b761dae863b7df80d98767056a99a0c56d77574acde
+generated: "2024-05-23T21:25:40.712595+05:30"

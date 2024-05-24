@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: root
-    password: root@123
-    url: jdbc:mysql://host.docker.internal:3306/oms
+    username: admin
+    password: gflk8sdb
+    url: jdbc:mysql://gfl-k8s-db.cyuanxrjfhqn.ap-south-1.rds.amazonaws.com:3306/oms
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect

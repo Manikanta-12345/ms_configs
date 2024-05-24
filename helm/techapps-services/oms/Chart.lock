@@ -1,0 +1,6 @@
+dependencies:
+- name: techapps-common
+  repository: file://../../techapps-common
+  version: 0.1.0
+digest: sha256:73e48c1d6434d940db9625874d8d8c29b84b88eb87735b132ac72188783e4c5a
+generated: "2024-05-23T20:25:34.303601+05:30"
